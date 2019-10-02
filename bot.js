@@ -1,5 +1,4 @@
 const Answer = require('./answer');
-
 const TwitchBot = require('twitch-bot');
 const qm = require('./questionManager.js');
 let QuestionManager;
@@ -37,17 +36,82 @@ Bot.on('close', () => {
 
 Bot.on('message', chatter => {
     console.log(chatter);
-    if (chatter.message === '!test') {
-        Bot.say('Command executed! PogChamp')
-    } else if (chatter.message === '!question' && chatter.mod) {
+    HandleMessage(chatter);
+});
+
+Bot.on('whisper', chatter => {
+    console.log(chatter);
+    HandleWhisper(chatter);
+});
+
+function BroadcastQuestionResult() {
+    Bot.say("--------Sonuçlar--------");
+    QuestionManager.participants.sort((a, b) => a.totalPoint - b.totalPoint)
+        .forEach(x => Bot.say(x.username + "-" + x.totalPoint));
+    Bot.say("------------------------");
+}
+
+function BroadcastQuestion(question) {
+    Bot.say("--------Yeni soru-------");
+    Bot.say("Puan: " + question.point);
+    Bot.say("Puan dağıtımı: " + (question.shareType === 1 ? "ilk bilen hepsini alır" : "puan azalarak dağıtılır"));
+    Bot.say("Süre: " + question.duration / 1000 + " saniye");
+    Bot.say("Soru: " + question.question);
+    question.answers.forEach((x, i) => Bot.say(i + "- " + x));
+    Bot.say("------------------------");
+}
+
+function BroadcastQuestionAnswer(question) {
+    Bot.say("Cevap: " + question.answers[question.correctAnswer]);
+}
+
+function ActQuestion() {
+    if (QuestionManager.ended) {
+        Bot.say("Bitti!");
+        BroadcastQuestionResult();
+        return;
+    }
+
+    let question = QuestionManager.CurrentQuestion();
+    BroadcastQuestion(question);
+
+    setTimeout(() => {
+        BroadcastQuestionAnswer(question);
+        QuestionManager.NextQuestion();
+        setTimeout(ActQuestion, question.waitDuration)
+    }, question.duration);
+}
+
+function HandleModMessage(chatter) {
+    if (chatter.message === '!question') {
         if (!QuestionManager || QuestionManager.ended) {
-            QuestionManager = new qm();
+            QuestionManager = new qm(chatter.username);
             Bot.say("Soru akışı başlıyor @" + chatter.username);
             ActQuestion();
         } else {
             Bot.say("Aktif soru akışı var @" + chatter.username);
         }
-    } else if (chatter.message.startsWith('!answer')) {
+    } else if (chatter.message.startsWith('!results')) {
+        if (!QuestionManager) {
+            Bot.say("Önce soru akışı başlatmalısınız @" + chatter.username);
+            return;
+        }
+
+        BroadcastQuestionResult();
+    }
+}
+
+async function HandleMessage(chatter) {
+    if (chatter.message.startsWith('!answer')) {
+        Bot.say("Cevaplar özelden :) /w @cokceken_bot !answer {Cevap} @" + chatter.username);
+    }
+
+    if (chatter.mod)
+        await HandleModMessage(chatter);
+}
+
+function HandleWhisper(chatter) {
+    if (chatter.message.startsWith('!answer')) {
         if (!QuestionManager) return;
         let answer = chatter.message.split(" ")[1];
         if (answer) {
@@ -71,39 +135,5 @@ Bot.on('message', chatter => {
             Bot.say("Cevap formatı: !answer {Cevap} olmalıdır @" + chatter.username);
         }
     }
-});
-
-function BroadcastQuestionResult() {
-    Bot.say("Bitti!");
-    QuestionManager.participants.forEach(x => Bot.say(x.username + "-" + x.totalPoint));
 }
 
-function BroadcastQuestion(question) {
-    Bot.say("--------Yeni soru-------");
-    Bot.say("Puan: " + question.point);
-    Bot.say("Puan dağıtımı: " + (question.shareType === 1 ? "ilk bilen hepsini alır" : "puan azalarak dağıtılır"));
-    Bot.say("Süre: " + question.duration / 1000 + " saniye");
-    Bot.say("Soru: " + question.question);
-    question.answers.forEach((x, i) => Bot.say(i + "- " + x));
-    Bot.say("------------------------");
-}
-
-function BroadcastQuestionAnswer(question) {
-    Bot.say("Cevap: " + question.answers[question.correctAnswer]);
-}
-
-function ActQuestion() {
-    if (QuestionManager.ended) {
-        BroadcastQuestionResult();
-        return;
-    }
-
-    let question = QuestionManager.CurrentQuestion();
-    BroadcastQuestion(question);
-
-    setTimeout(() => {
-        BroadcastQuestionAnswer(question);
-        QuestionManager.NextQuestion();
-        setTimeout(ActQuestion, question.waitDuration)
-    }, question.duration);
-}

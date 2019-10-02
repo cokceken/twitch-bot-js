@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="96553d9e-082d-4fd0-a276-cc85c32b0bb5" name="Default Changelist" comment="" />
+    <list default="true" id="96553d9e-082d-4fd0-a276-cc85c32b0bb5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fileManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/questions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/answer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/twitch-bot/lib/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/twitch-bot/lib/parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/twitch-bot/test/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/twitch-bot/test/parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/twitch-bot/test/samples.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/twitch-bot/test/samples.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/twitch-bot/test/socketstub.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/twitch-bot/test/socketstub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participant.js" beforeDir="false" afterPath="$PROJECT_DIR$/participant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questionManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/questionManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions.js" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,44 +33,81 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+            <state relative-caret-position="-952">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/questions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js">
+        <entry file="file://$PROJECT_DIR$/fileManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="8" />
-              <folding>
-                <element signature="e#729#924#0" />
-                <element signature="e#3625#3664#0" />
-                <element signature="e#3682#3775#0" />
-                <element signature="e#3793#3972#0" />
-                <element signature="e#4359#4490#0" />
-                <element signature="e#4528#4643#0" />
-                <element signature="e#4655#4706#0" />
-              </folding>
+            <state relative-caret-position="365">
+              <caret line="36" column="58" lean-forward="true" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/participant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-11-55.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/question.js">
+        <entry file="file://$PROJECT_DIR$/questions.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-7-45.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-8-55.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/questionManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -75,19 +129,32 @@
       <find>setpoin</find>
       <find>point</find>
       <find>participant</find>
+      <find>ended</find>
+      <find>new</find>
+      <find>new</find>
+      <find>async</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/node_modules/questionManager.js" />
         <option value="$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js" />
+        <option value="$PROJECT_DIR$/node_modules/twitch-bot/lib/parser.js" />
+        <option value="$PROJECT_DIR$/node_modules/twitch-bot/test/parser.js" />
+        <option value="$PROJECT_DIR$/node_modules/twitch-bot/test/samples.js" />
+        <option value="$PROJECT_DIR$/node_modules/twitch-bot/test/socketstub.js" />
         <option value="$PROJECT_DIR$/questions.js" />
-        <option value="$PROJECT_DIR$/answer.js" />
-        <option value="$PROJECT_DIR$/participant.js" />
-        <option value="$PROJECT_DIR$/questionManager.js" />
+        <option value="$PROJECT_DIR$/questions.json" />
         <option value="$PROJECT_DIR$/question.js" />
+        <option value="$PROJECT_DIR$/answer.js" />
         <option value="$PROJECT_DIR$/bot.js" />
+        <option value="$PROJECT_DIR$/questionManager.js" />
+        <option value="$PROJECT_DIR$/fileManager.js" />
+        <option value="$PROJECT_DIR$/participant.js" />
       </list>
     </option>
   </component>
@@ -97,53 +164,53 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="twitch bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitch bot" type="462c0819:PsiDirectoryNode" />
+              <item name="twitch bot js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twitch bot js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="twitch bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitch bot" type="462c0819:PsiDirectoryNode" />
+              <item name="twitch bot js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twitch bot js" type="462c0819:PsiDirectoryNode" />
               <item name="node_modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="twitch bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitch bot" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="twitch-bot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twitch bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitch bot" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="twitch-bot" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="twitch bot js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twitch bot js" type="462c0819:PsiDirectoryNode" />
+              <item name="Results" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/nodejs/node.exe" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\open source\twitch bot js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\code\open source\twitch bot" />
     </key>
@@ -188,22 +255,23 @@
       <workItem from="1569852793814" duration="2215000" />
       <workItem from="1569914240988" duration="4408000" />
       <workItem from="1569930181612" duration="6085000" />
+      <workItem from="1570000472895" duration="9906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26292000" />
+    <option name="totallyTimeSpent" value="36198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-86" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49757674" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.5024233" side_tool="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -220,37 +288,50 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bot.js</url>
-          <line>51</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>Number.isNaN(parseInt(answer))</expression-string>
+        <expression-string>timeStamp.toLocaleString()</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>parseInt(answer)</expression-string>
+        <expression-string>timeStamp.toTimeString()</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Number.isNaN(10)</expression-string>
+        <expression-string>timeStamp.toString()</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Number.isNaN(answer)</expression-string>
+        <expression-string>timeStamp.toISOString()</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>timeStamp</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>timeStamp.toUTCString()</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>timeStamp.getUTCSeconds()</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>timeStamp.getUTCFullYear()</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>timeStamp.getUTCDate()</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -276,13 +357,6 @@
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/lib/parser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -290,61 +364,158 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/answer.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state relative-caret-position="529">
+          <caret line="187" column="75" selection-start-line="187" selection-start-column="75" selection-end-line="187" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/participant.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/lib/parser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="32" />
+        <state relative-caret-position="620">
+          <caret line="73" column="17" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/questionManager.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/test/parser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        <state relative-caret-position="646">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/test/samples.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/test/socketstub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/questions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="340">
+          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/twitch-bot/lib/bot.js">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/10.16.3/node-typings/node_modules/@types/node/readline.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="162" column="8" lean-forward="true" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="8" />
-          <folding>
-            <element signature="e#729#924#0" />
-            <element signature="e#3625#3664#0" />
-            <element signature="e#3682#3775#0" />
-            <element signature="e#3793#3972#0" />
-            <element signature="e#4359#4490#0" />
-            <element signature="e#4528#4643#0" />
-            <element signature="e#4655#4706#0" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bot.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+        <state relative-caret-position="130">
+          <caret line="1305" column="10" selection-start-line="1305" selection-end-line="1306" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/10.16.3/core-modules/fs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="339" column="26" selection-start-line="339" selection-start-column="22" selection-end-line="339" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/question.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <caret line="22" column="59" lean-forward="true" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/10.16.3/core-modules/_stream_readable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="264" column="12" selection-start-line="264" selection-start-column="12" selection-end-line="264" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-952">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/questionManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/Result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-7-45.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-8-55.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="36" column="58" lean-forward="true" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/answer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/participant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/Result-2019-10-2-13-11-55.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/questions.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>

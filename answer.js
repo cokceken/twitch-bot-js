@@ -3,6 +3,7 @@ module.exports = class Answer {
         this.username = username;
         this.answer = answer;
         this.point = 0;
+        this.correct = false;
     };
 
     SetPoint(point) {

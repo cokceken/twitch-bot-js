@@ -8,6 +8,7 @@ module.exports = class Question {
         duration,
         waitDuration) {
         this.answerCount = 0;
+        this.correctAnswerCount = 0;
         this.question = question;
         this.point = point;
         this.duration = duration;
@@ -18,19 +19,21 @@ module.exports = class Question {
     }
 
     GetNextPoint(answer) {
+        this.answerCount++;
         if (answer.answer !== this.correctAnswer) return 0;
+        answer.correct = true;
 
         let result = this.point;
         switch (this.shareType) {
             case 0:
-                result -= this.answerCount;
+                result -= this.correctAnswerCount;
                 if (result < 0) result = 1;
                 break;
             case 1:
-                if (this.answerCount !== 0) result = 0;
+                if (this.correctAnswerCount !== 0) result = 0;
         }
 
-        this.answerCount++;
+        this.correctAnswerCount++;
         return result;
     }
 };

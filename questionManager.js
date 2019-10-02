@@ -1,19 +1,15 @@
 const Participant = require('./participant');
-const Questions = require('./questions');
-const Question = require('./question');
+const FileManager = require('./fileManager');
 
 module.exports = class QuestionManager {
-    constructor() {
-        this.questions = [];
-        Questions.forEach(x =>
-            this.questions.push(
-                new Question(x.question, x.point,
-                    x.shareType, x.answers,
-                    x.correctAnswer, x.duration, x.waitDuration)));
+    constructor(username) {
+        this.questions = FileManager.ReadQuestions();
         this.currentQuestion = 0;
         this.participants = [];
+        this.createdBy = username;
         this.currentAnswers = [];
         this.ended = false;
+        FileManager.WriteResults(this);
     };
 
     CurrentQuestion() {
@@ -36,10 +32,15 @@ module.exports = class QuestionManager {
         return true;
     }
 
+    End(){
+        this.ended = true;
+        FileManager.WriteResults(this);
+    }
+
     NextQuestion() {
         this.currentQuestion++;
         this.currentAnswers = [];
-        if (this.questions.length === this.currentQuestion) this.ended = true;
+        if (this.questions.length === this.currentQuestion) this.End();
     }
 
     CheckDuplicateAnswer(answer) {

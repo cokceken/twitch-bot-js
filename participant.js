@@ -10,4 +10,8 @@ module.exports = class Participant {
         this.totalPoint += answer.point;
         this.answers.push(answer);
     }
+
+    CorrectAnswerCount(){
+        return this.answers.filter(x => x.correct).length;
+    }
 };

@@ -1,0 +1,20 @@
+Sonuçlar
+Tarih: Wed Oct 02 2019 13:08:55 GMT+0300 (GMT+03:00)
+Başlatan Kullanıcı: cokceken
+Sorular:
+	0 - 1. soru
+		Puan: 50
+		Süre: 30000ms
+		Paylaşım türü: puan azalarak dağıtılır
+		Cevap sayısı: 1
+		Doğru cevap sayısı: 1
+	1 - 2. soru
+		Puan: 100
+		Süre: 30000ms
+		Paylaşım türü: ilk bilen hepsini alır
+		Cevap sayısı: 1
+		Doğru cevap sayısı: 0
+Sonuçlar:	0 - cokceken
+		Puan: 50
+		Cevap sayısı: 2
+		Doğru cevap sayısı: 0
