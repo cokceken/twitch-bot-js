@@ -1,6 +1,31 @@
 {
   "name": "twitch bot js",
   "version": "1.0.0",
+  "author": "Semih Çokçeken <semih5919@hotmail.com> (https://github.com/cokceken)",
+  "license": "MIT",
+  "contributors": [
+    "Murat Mayadağ (https://github.com/mmayadag)"
+  ],
+  "keywords": [
+    "npm",
+    "lodash",
+    "twitch bot",
+    "chat bot",
+    "question bot"
+  ],
+  "description": "Twitch chat bot, questions and answers",
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cokceken/twitch-bot-js.git"
+  },
+  "homepage": "https://github.com/cokceken/twitch-bot-js",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
   "dependencies": {
     "lodash": "latest"
   }
