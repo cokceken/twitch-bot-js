@@ -73,7 +73,7 @@ const TwitchBot = class TwitchBot extends EventEmitter {
       }
 
       if (data.includes('WHISPER')) {
-        const chatter = parser.formatWHISPER(data)
+        const chatter = parser.formatWHISPER(data);
         this.emit('whisper', chatter)
       }
 
@@ -157,7 +157,7 @@ const TwitchBot = class TwitchBot extends EventEmitter {
     this.writeIrcMessage(`PART ${channel}`)
   }
 
-  say(message, channel, callback ) {
+  say(message, channel, callback , isMe = true) {
     if(!channel) {
       channel = this.channels[0]
     }
@@ -167,7 +167,7 @@ const TwitchBot = class TwitchBot extends EventEmitter {
         message: 'Exceeded PRIVMSG character limit (500)'
       })
     } else {
-      this.writeIrcMessage('PRIVMSG ' + channel + ' :' + message)
+      this.writeIrcMessage('PRIVMSG ' + channel + ' :' + (isMe ? '/me ' : '') + message)
     }
   }
 

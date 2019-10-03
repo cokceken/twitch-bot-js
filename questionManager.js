@@ -9,6 +9,7 @@ module.exports = class QuestionManager {
         this.createdBy = username;
         this.currentAnswers = [];
         this.ended = false;
+        this.currentQuestionActive = false;
         FileManager.WriteResults(this);
     };
 
@@ -32,9 +33,21 @@ module.exports = class QuestionManager {
         return true;
     }
 
-    End(){
+    SetActive() {
+        this.currentQuestionActive = true;
+    }
+
+    SetPassive() {
+        this.currentQuestionActive = false;
+    }
+
+    End() {
         this.ended = true;
         FileManager.WriteResults(this);
+    }
+
+    DoesAcceptAnswer(){
+        return !this.ended && this.currentQuestionActive;
     }
 
     NextQuestion() {

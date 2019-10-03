@@ -26,11 +26,16 @@ module.exports = class Question {
         let result = this.point;
         switch (this.shareType) {
             case 0:
-                result -= this.correctAnswerCount;
-                if (result < 0) result = 1;
+                if (this.correctAnswerCount !== 0) result = 0;
                 break;
             case 1:
-                if (this.correctAnswerCount !== 0) result = 0;
+                result -= this.correctAnswerCount * 5;
+                if (result < 0) result = 5;
+                break;
+            case 2:
+                result -= this.correctAnswerCount * 10;
+                if (result < 0) result = 10;
+                break;
         }
 
         this.correctAnswerCount++;

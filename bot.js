@@ -47,23 +47,29 @@ Bot.on('whisper', chatter => {
 
 function BroadcastQuestionResult() {
     Bot.say("--------Sonuçlar--------");
-    QuestionManager.participants.sort((a, b) => a.totalPoint - b.totalPoint)
-        .forEach(x => Bot.say(x.username + "-" + x.totalPoint));
+    QuestionManager.participants.sort((a, b) => b.totalPoint - a.totalPoint)
+        .forEach((x, i) => Bot.say((i + 1) + ' - ' + x.username + " " + x.totalPoint));
     Bot.say("------------------------");
 }
 
-function BroadcastQuestion(question) {
-    Bot.say("--------Yeni soru-------");
-    Bot.say("Puan: " + question.point);
-    Bot.say("Puan dağıtımı: " + (question.shareType === 1 ? "ilk bilen hepsini alır" : "puan azalarak dağıtılır"));
-    Bot.say("Süre: " + question.duration / 1000 + " saniye");
-    Bot.say("Soru: " + question.question);
-    question.answers.forEach((x, i) => Bot.say(i + "- " + x));
-    Bot.say("------------------------");
+function BroadcastQuestion() {
+    let question = QuestionManager.CurrentQuestion();
+    let message = question.question;
+    question.answers.forEach((x, i) => message += " " + (i + 1) + ") " + x);
+    Bot.say(message);
+    // Bot.say("--------Yeni soru-------");
+    // Bot.say("Puan: " + question.point);
+    // Bot.say("Puan dağıtımı: " + (question.shareType === 1 ? "ilk bilen hepsini alır" : "puan azalarak dağıtılır"));
+    // Bot.say("Süre: " + question.duration / 1000 + " saniye");
+    // Bot.say("Soru: " + question.question);
+    // question.answers.forEach((x, i) => Bot.say(i+1 + "- " + x));
+    // Bot.say("------------------------");
 }
 
-function BroadcastQuestionAnswer(question) {
-    Bot.say("Cevap: " + question.answers[question.correctAnswer]);
+function BroadcastQuestionAnswer() {
+    let question = QuestionManager.CurrentQuestion();
+    Bot.say("Cevap alımı durdu, doğru cevap: "
+        + (question.correctAnswer + 1) + ') ' + question.answers[question.correctAnswer]);
 }
 
 function ActQuestion() {
@@ -73,16 +79,28 @@ function ActQuestion() {
         return;
     }
 
+    QuestionManager.SetActive();
     let question = QuestionManager.CurrentQuestion();
-    BroadcastQuestion(question);
-
+    BroadcastQuestion();
     setTimeout(() => {
-        BroadcastQuestionAnswer(question);
-        QuestionManager.NextQuestion();
-        setTimeout(ActQuestion, question.waitDuration)
+        if (QuestionManager.DoesAcceptAnswer()) {
+            QuestionManager.SetPassive();
+            BroadcastQuestionAnswer();
+        }
     }, question.duration);
+
+    // setTimeout(() => {
+    //     BroadcastQuestionAnswer(question);
+    //     QuestionManager.NextQuestion();
+    //     setTimeout(ActQuestion, question.waitDuration)
+    // }, question.duration);
 }
 
+//TODO: 1-2-3 to a-b-c
+//TODO: end question command
+//TODO: exception management
+//TODO: commands should be !question {command} for other types of improvements
+//TODO: better timeout management system
 function HandleModMessage(chatter) {
     if (chatter.message === '!question') {
         if (!QuestionManager || QuestionManager.ended) {
@@ -99,6 +117,11 @@ function HandleModMessage(chatter) {
         }
 
         BroadcastQuestionResult();
+    } else if (chatter.message.startsWith('!next')) {
+        if (QuestionManager.DoesAcceptAnswer())
+            BroadcastQuestionAnswer();
+        QuestionManager.NextQuestion();
+        ActQuestion();
     }
 }
 
@@ -107,34 +130,32 @@ async function HandleMessage(chatter) {
         Bot.say("Cevaplar özelden :) /w @cokceken_bot !answer {Cevap} @" + chatter.username);
     }
 
-    if (chatter.mod)
+    if ('#' + chatter.username === chatter.channel || chatter.username === 'cokceken')
         await HandleModMessage(chatter);
 }
 
 function HandleWhisper(chatter) {
-    if (chatter.message.startsWith('!answer')) {
-        if (!QuestionManager) return;
-        let answer = chatter.message.split(" ")[1];
-        if (answer) {
-            let intAnswer = parseInt(answer);
-            if (Number.isNaN(intAnswer)) {
-                Bot.say('Cevap bir sayı olmalı @' + chatter.username);
-                return;
-            }
-
-            let answerPeriod = QuestionManager.CurrentQuestion().answers.length;
-            if (intAnswer < 1 || intAnswer > answerPeriod) {
-                Bot.say('Cevap 1-' + answerPeriod + ' arasında olabilir @' + chatter.username);
-                return;
-            }
-            if (QuestionManager.NewAnswer(new Answer(chatter.username, intAnswer - 1))) {
-                Bot.say("Cevabınız alındı @" + chatter.username);
-            } else {
-                Bot.say("Cevabı değiştiremezsiniz @" + chatter.username);
-            }
-        } else {
-            Bot.say("Cevap formatı: !answer {Cevap} olmalıdır @" + chatter.username);
+    if (!QuestionManager || !QuestionManager.DoesAcceptAnswer()) return;
+    let answer = chatter.message;
+    if (answer) {
+        let intAnswer = parseInt(answer);
+        if (Number.isNaN(intAnswer)) {
+            Bot.say('Cevap bir sayı olmalı @' + chatter.username, null, null, false);
+            return;
         }
+
+        let answerPeriod = QuestionManager.CurrentQuestion().answers.length;
+        if (intAnswer < 1 || intAnswer > answerPeriod) {
+            Bot.say('Cevap 1-' + answerPeriod + ' arasında olabilir @' + chatter.username, null, null, false);
+            return;
+        }
+        if (QuestionManager.NewAnswer(new Answer(chatter.username, intAnswer - 1))) {
+            Bot.say("Cevabınız alındı @" + chatter.username, null, null, false);
+        } else {
+            Bot.say("Cevabı değiştiremezsiniz @" + chatter.username, null, null, false);
+        }
+    } else {
+        Bot.say("Cevap formatı: !answer {Cevap} olmalıdır @" + chatter.username, null, null, false);
     }
 }
 

@@ -1,20 +1,47 @@
 [
   {
-    "question": "1. soru",
+    "question": "Hangisi bilim kurgu konularını işlemez?",
     "point": 50,
     "shareType": 0,
-    "answers": ["Cevap 1", "Cevap 2", "Cevap 3", "Cevap 4"],
-    "correctAnswer": 1,
-    "duration": 30000,
+    "answers": ["doctor who",	"fringe", 	"11/22/63",	"better call saul"],
+    "correctAnswer": 3,
+    "duration": 20000,
     "waitDuration": 10000
   },
   {
-    "question": "2. soru",
+    "question": "Ruhsar ve Mazhar'ın arada bir araya gelebilmesi için ne gerekirdi?",
     "point": 100,
     "shareType": 1,
-    "answers": ["Cevap 1", "Cevap 2", "Cevap 3", "Cevap 4"],
-    "correctAnswer": 2,
-    "duration": 30000,
+    "answers": ["Yağmur yağması",	"Mazhar'ın başına kötü bir şey gelmesi",	"Menkıbe'nin gelin adayı getirmesi", "Meleklerden izin alması"],
+    "correctAnswer": 0,
+    "duration": 20000,
+    "waitDuration": 0
+  },
+  {
+    "question": "Walter White'ın hastalığı nedir?",
+    "point": 100,
+    "shareType": 1,
+    "answers": ["Kan Kanseri",	"Akciğer Kanseri",	"Karaciğer Kanseri",	"Pankreas Kanseri"],
+    "correctAnswer": 0,
+    "duration": 20000,
+    "waitDuration": 0
+  },
+  {
+    "question": "Binbir Gece dizisindeki ahlaksız teklif ne kadardır?",
+    "point": 100,
+    "shareType": 1,
+    "answers": ["100.000 dolar",	"150.000 dolar",	"250.000 dolar",	"100.000 dolar + Holosko"],
+    "correctAnswer": 0,
+    "duration": 20000,
+    "waitDuration": 0
+  },
+  {
+    "question": "Kavak Yelleri dizisinde hangi ikili sevgili olmamıştır?",
+    "point": 100,
+    "shareType": 1,
+    "answers": ["Aslı - Efe",	"Mine - Efe",	"Aslı - Deniz",	"Mine - Deniz"],
+    "correctAnswer": 0,
+    "duration": 20000,
     "waitDuration": 0
   }
 ]
