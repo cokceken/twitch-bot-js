@@ -1,12 +1,13 @@
-const Answer = require('./answer');
-const TwitchBot = require('twitch-bot');
+const Answer = require('./entity/answer');
+const TwitchBot = require('./tmi_core/twitchBot');
 const qm = require('./questionManager.js');
+const Configuration = require('./configuration');
 let QuestionManager;
 
 const Bot = new TwitchBot({
-    username: 'cokceken_bot',
-    oauth: 'oauth:l04h1slhg33c5i0ozy2xd4jbo1zlis',
-    channels: ['piadam']
+    username: Configuration.username,
+    oauth: Configuration.oauth,
+    channels: [Configuration.channel]
 });
 
 Bot.on('connected', () => {

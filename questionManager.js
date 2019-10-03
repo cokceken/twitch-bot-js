@@ -1,4 +1,4 @@
-const Participant = require('./participant');
+const Participant = require('./entity/participant');
 const FileManager = require('./fileManager');
 
 module.exports = class QuestionManager {

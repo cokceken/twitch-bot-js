@@ -1,4 +1,4 @@
-let Question = require('./question');
+let Question = require('./entity/question');
 const fs = require('fs');
 
 const FileManager = new class FileManager {
@@ -29,7 +29,7 @@ const FileManager = new class FileManager {
             + "\n\t\tCevap sayısı: " + x.answerCount
             + "\n\t\tDoğru cevap sayısı: " + x.correctAnswerCount + "\n"
         );
-        result += "Sonuçlar:";
+        result += "Sonuçlar:\n";
         questionManager.participants.sort((a, b) => a.totalPoint - b.totalPoint).forEach((x, i) => {
             result += "\t" + i + " - " + x.username
                 + "\n\t\tPuan: " + x.totalPoint
@@ -37,7 +37,7 @@ const FileManager = new class FileManager {
                 + "\n\t\tDoğru cevap sayısı: " + x.CorrectAnswerCount() + "\n";
         });
 
-        let path = __dirname + '/Results/Result-' + this.GetFormattedTime(timeStamp) + '.txt';
+        let path = __dirname + '/result/Result-' + this.GetFormattedTime(timeStamp) + '.txt';
 
         fs.writeFile(path, result, (err) => {
             if (err) {
