@@ -1,7 +1,7 @@
 let Question = require('./entity/question');
 const fs = require('fs');
 
-const FileManager = new class FileManager {
+module.exports = new class FileManager {
     ReadQuestions() {
         let questions = [];
         let data = fs.readFileSync('./questions.json');
@@ -57,5 +57,3 @@ const FileManager = new class FileManager {
         return y + "-" + m + "-" + d + "-" + h + "-" + mi + "-" + s;
     }
 };
-
-module.exports = FileManager;

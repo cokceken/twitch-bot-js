@@ -1,7 +1,7 @@
-const Answer = require('./entity/answer');
 const TwitchBot = require('./tmi_core/twitchBot');
 const qm = require('./questionManager.js');
 const Configuration = require('./configuration');
+const AuthorizationManager = require('./authorizationManager');
 let QuestionManager;
 
 const Bot = new TwitchBot({
@@ -36,8 +36,9 @@ Bot.on('close', () => {
 });
 
 Bot.on('message', chatter => {
-    console.log(chatter);
-    HandleMessage(chatter);
+    if (chatter.message.startsWith('!cahilertem')) {
+        HandleQuestionMessage(chatter);
+    }
 });
 
 Bot.on('whisper', chatter => {
@@ -45,117 +46,36 @@ Bot.on('whisper', chatter => {
     HandleWhisper(chatter);
 });
 
-function BroadcastQuestionResult() {
-    Bot.say("--------Sonuçlar--------");
-    QuestionManager.participants.sort((a, b) => b.totalPoint - a.totalPoint)
-        .forEach((x, i) => Bot.say((i + 1) + ' - ' + x.username + " " + x.totalPoint));
-    Bot.say("------------------------");
-}
+function HandleQuestionMessage(chatter) {
+    if (!AuthorizationManager.CheckPermission("cahilertem", "", chatter.username, chatter.channel))
+        return;
 
-function BroadcastQuestion() {
-    let question = QuestionManager.CurrentQuestion();
-    let message = question.question;
-    question.answers.forEach((x, i) => message += " " + (i + 1) + ") " + x);
-    Bot.say(message);
-    // Bot.say("--------Yeni soru-------");
-    // Bot.say("Puan: " + question.point);
-    // Bot.say("Puan dağıtımı: " + (question.shareType === 1 ? "ilk bilen hepsini alır" : "puan azalarak dağıtılır"));
-    // Bot.say("Süre: " + question.duration / 1000 + " saniye");
-    // Bot.say("Soru: " + question.question);
-    // question.answers.forEach((x, i) => Bot.say(i+1 + "- " + x));
-    // Bot.say("------------------------");
-}
-
-function BroadcastQuestionAnswer() {
-    let question = QuestionManager.CurrentQuestion();
-    Bot.say("Cevap alımı durdu, doğru cevap: "
-        + (question.correctAnswer + 1) + ') ' + question.answers[question.correctAnswer]);
-}
-
-function ActQuestion() {
-    if (QuestionManager.ended) {
-        Bot.say("Bitti!");
-        BroadcastQuestionResult();
+    if (!QuestionManager || QuestionManager.ended) {
+        QuestionManager = new qm(Bot, chatter.username);
         return;
     }
 
-    QuestionManager.SetActive();
-    let question = QuestionManager.CurrentQuestion();
-    BroadcastQuestion();
-    setTimeout(() => {
-        if (QuestionManager.DoesAcceptAnswer()) {
-            QuestionManager.SetPassive();
-            BroadcastQuestionAnswer();
-        }
-    }, question.duration);
-
-    // setTimeout(() => {
-    //     BroadcastQuestionAnswer(question);
-    //     QuestionManager.NextQuestion();
-    //     setTimeout(ActQuestion, question.waitDuration)
-    // }, question.duration);
-}
-
-//TODO: 1-2-3 to a-b-c
-//TODO: end question command
-//TODO: exception management
-//TODO: commands should be !question {command} for other types of improvements
-//TODO: better timeout management system
-function HandleModMessage(chatter) {
-    if (chatter.message === '!question') {
-        if (!QuestionManager || QuestionManager.ended) {
-            QuestionManager = new qm(chatter.username);
-            Bot.say("Soru akışı başlıyor @" + chatter.username);
-            ActQuestion();
-        } else {
-            Bot.say("Aktif soru akışı var @" + chatter.username);
-        }
-    } else if (chatter.message.startsWith('!results')) {
-        if (!QuestionManager) {
-            Bot.say("Önce soru akışı başlatmalısınız @" + chatter.username);
-            return;
-        }
-
-        BroadcastQuestionResult();
-    } else if (chatter.message.startsWith('!next')) {
-        if (QuestionManager.DoesAcceptAnswer())
-            BroadcastQuestionAnswer();
-        QuestionManager.NextQuestion();
-        ActQuestion();
+    let command = chatter.message.split(" ")[1];
+    switch (command) {
+        case "sıradaki":
+            QuestionManager.Next();
+            break;
+        case "sonuçlar":
+            QuestionManager.BroadcastResults();
+            break;
+        case "bitir":
+            QuestionManager.End();
+            break;
+        case "top5":
+            QuestionManager.BroadcastResults(5);
+            break;
+        case "soru":
+            QuestionManager.BroadcastQuestion();
+            break;
     }
 }
 
-async function HandleMessage(chatter) {
-    if (chatter.message.startsWith('!answer')) {
-        Bot.say("Cevaplar özelden :) /w @cokceken_bot !answer {Cevap} @" + chatter.username);
-    }
-
-    if ('#' + chatter.username === chatter.channel || chatter.username === 'cokceken')
-        await HandleModMessage(chatter);
+function HandleWhisper(chatter){
+    if (QuestionManager)
+        QuestionManager.Whisper(chatter);
 }
-
-function HandleWhisper(chatter) {
-    if (!QuestionManager || !QuestionManager.DoesAcceptAnswer()) return;
-    let answer = chatter.message;
-    if (answer) {
-        let intAnswer = parseInt(answer);
-        if (Number.isNaN(intAnswer)) {
-            Bot.say('Cevap bir sayı olmalı @' + chatter.username, null, null, false);
-            return;
-        }
-
-        let answerPeriod = QuestionManager.CurrentQuestion().answers.length;
-        if (intAnswer < 1 || intAnswer > answerPeriod) {
-            Bot.say('Cevap 1-' + answerPeriod + ' arasında olabilir @' + chatter.username, null, null, false);
-            return;
-        }
-        if (QuestionManager.NewAnswer(new Answer(chatter.username, intAnswer - 1))) {
-            Bot.say("Cevabınız alındı @" + chatter.username, null, null, false);
-        } else {
-            Bot.say("Cevabı değiştiremezsiniz @" + chatter.username, null, null, false);
-        }
-    } else {
-        Bot.say("Cevap formatı: !answer {Cevap} olmalıdır @" + chatter.username, null, null, false);
-    }
-}
-
