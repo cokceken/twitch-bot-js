@@ -3,6 +3,7 @@ const FileManager = require('./fileManager');
 const Bot = require('./bot');
 const Answer = require('./entity/answer');
 const AnswerManager = require('./answerManager');
+const TimeOutManager = require('./timeoutManager');
 
 module.exports = class QuestionManager {
     constructor(bot, username) {
@@ -18,9 +19,27 @@ module.exports = class QuestionManager {
         this.bot.say("Soru akışı yaratıldı @" + username);
     };
 
+    CurrentQuestionActive() {
+        return this.currentQuestionActive;
+    }
+
+    SetCurrentQuestionActive(val) {
+        this.currentQuestionActive = val;
+    }
+
+    Ended() {
+        return this.ended;
+    }
+
+    SetEnded(val) {
+        this.ended = val;
+    }
+
     Next() {
-        if (this.currentQuestionActive)
+        if (this.CurrentQuestionActive()) {
             this.BroadcastQuestionAnswer();
+            TimeOutManager.Clear(TimeOutManager.keys.questionEnd);
+        }
 
         this.currentQuestion++;
         if (this.currentQuestion === this.questions.length) {
@@ -28,18 +47,18 @@ module.exports = class QuestionManager {
             return;
         }
 
-        this.currentQuestionActive = true;
+        this.SetCurrentQuestionActive(true);
         this.currentAnswers = [];
 
         let currentQuestion = this.CurrentQuestion();
         this.BroadcastQuestion();
 
-        setTimeout(() => {
-            if (this.ended) return;
+        TimeOutManager.keys.questionEnd = TimeOutManager.Set(() => {
+            if (this.Ended()) return;
 
-            if (this.currentQuestionActive) {
+            if (this.CurrentQuestionActive()) {
                 this.BroadcastQuestionAnswer();
-                this.currentQuestionActive = false;
+                this.SetCurrentQuestionActive(false);
             }
 
             if (this.currentQuestion + 1 === this.questions.length) {
@@ -54,8 +73,8 @@ module.exports = class QuestionManager {
 
     End() {
         this.BroadcastQuestionAnswer();
-        this.ended = true;
-        this.currentQuestionActive = false;
+        this.SetEnded(true);
+        this.SetCurrentQuestionActive(false);
         this.BroadcastResults();
         FileManager.WriteResults(this);
     }
@@ -77,7 +96,7 @@ module.exports = class QuestionManager {
     }
 
     DoesAcceptAnswer() {
-        return !this.ended && this.currentQuestionActive;
+        return !this.Ended() && this.CurrentQuestionActive();
     }
 
     CheckDuplicateAnswer(answer) {
@@ -113,7 +132,7 @@ module.exports = class QuestionManager {
     }
 
     BroadcastQuestionAnswer() {
-        if (!this.currentQuestionActive) return;
+        if (!this.CurrentQuestionActive()) return;
         let question = this.CurrentQuestion();
 
         let answersLength = question.answers.length;
