@@ -1,14 +1,19 @@
 const TwitchBot = require('./tmi_core/twitchBot');
-const qm = require('./questionManager.js');
+const qm = require('./manager/questionManager');
+const trackerManager = require("./manager/trackerManager");
+const voteManager = require("./manager/voteManager");
 const Configuration = require('./configuration');
-const AuthorizationManager = require('./authorizationManager');
-let QuestionManager;
+const AuthorizationManager = require('./manager/authorizationManager');
 
 const Bot = new TwitchBot({
     username: Configuration.username,
     oauth: Configuration.oauth,
     channels: [Configuration.channel]
 });
+
+let QuestionManager;
+let TrackerManager = new trackerManager(Bot);
+let VoteManager = new voteManager(Bot);
 
 Bot.on('connected', () => {
     Bot.say("bot adam");
@@ -36,14 +41,18 @@ Bot.on('close', () => {
 });
 
 Bot.on('message', chatter => {
-    if (chatter.message.startsWith('!cahilertem')) {
-        HandleQuestionMessage(chatter);
-    }
+    TrackerManager.Message(chatter);
+    VoteManager.Message(chatter);
+    // if (chatter.message.startsWith('!cahilertem')) {
+    //     HandleQuestionMessage(chatter);
+    // }
 });
 
 Bot.on('whisper', chatter => {
-    console.log(chatter);
-    HandleWhisper(chatter);
+    TrackerManager.Whisper(chatter);
+    VoteManager.Whisper(chatter);
+    // if (QuestionManager)
+    //     QuestionManager.Whisper(chatter);
 });
 
 function HandleQuestionMessage(chatter) {
@@ -73,9 +82,4 @@ function HandleQuestionMessage(chatter) {
             QuestionManager.BroadcastQuestion();
             break;
     }
-}
-
-function HandleWhisper(chatter){
-    if (QuestionManager)
-        QuestionManager.Whisper(chatter);
 }

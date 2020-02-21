@@ -1,7 +1,7 @@
-const Participant = require('./entity/participant');
+const Participant = require('../entity/participant');
 const FileManager = require('./fileManager');
-const Bot = require('./bot');
-const Answer = require('./entity/answer');
+const Bot = require('../bot');
+const Answer = require('../entity/answer');
 const AnswerManager = require('./answerManager');
 const TimeOutManager = require('./timeoutManager');
 

@@ -1,4 +1,4 @@
-let Question = require('./entity/question');
+let Question = require('../entity/question');
 const fs = require('fs');
 
 module.exports = new class FileManager {

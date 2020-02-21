@@ -141,7 +141,9 @@ const TwitchBot = class TwitchBot extends EventEmitter {
   }
 
   writeIrcMessage(text) {
-    this.irc.write(text + "\r\n")
+    this.irc.write(text + "\r\n", (err) => {
+      if(err) console.log(err);
+    });
   }
 
   join(channel) {
@@ -184,8 +186,9 @@ const TwitchBot = class TwitchBot extends EventEmitter {
         message: 'Exceeded PRIVMSG character limit (500)'
       })
     } else {
-      console.log('SEND PRIVMSG #jtv :/w ' + username + ' ' + message);
-      this.writeIrcMessage('PRIVMSG #jtv :/w ' + username + ' ' + message);
+      let ircMessage = 'PRIVMSG #jtv :/w @' + username + ' ' + message;
+      console.log(ircMessage);
+      this.writeIrcMessage(ircMessage);
     }
   }
 
