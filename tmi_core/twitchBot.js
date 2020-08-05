@@ -194,16 +194,34 @@ const TwitchBot = class TwitchBot extends EventEmitter {
 
   timeout(username, channel, duration=600, reason='') {
     if(!channel) {
-      channel = this.channels[0]
+      channel = this.channels[0];
     }
-    this.say(`/timeout ${username} ${duration} ${reason}`, channel)
+    this.say(`/timeout ${username} ${duration} ${reason}`, channel, null, false);
+  }
+
+  emoteOnly(channel){
+    if(!channel) {
+      channel = this.channels[0];
+    }
+    this.say('/emoteonly', channel, null, false);
+  }
+
+  emoteOnlyOff(channel){
+    if(!channel) {
+      channel = this.channels[0];
+    }
+    this.say('/emoteonlyoff', channel, null, false);
+  }
+
+  giveCurrency(username, channel){
+    this.say('!give ' + username + ' 1000',channel, null, false);
   }
 
   ban(username, channel, reason='') {
     if(!channel) {
-      channel = this.channels[0]
+      channel = this.channels[0];
     }
-    this.say(`/ban ${username} ${reason}`, channel)
+    this.say(`/ban ${username} ${reason}`, channel, null, false);
   }
 
   close() {
